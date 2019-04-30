@@ -18,7 +18,7 @@ def index():
 
 @app.route('/preview')
 def preview():
-    df = pd.read_csv("data/Admission_P.csv")
+    df = pd.read_csv("data/Admission_Predict_Ver1.1.csv")
     return render_template("preview.html",df_view = df)
 
 @app.route('/',methods=["POST"])
@@ -44,14 +44,27 @@ def analyze():
 
 		# Reloading the Model
 		if model_choice == 'linear_model':
-		    linear_model = joblib.load('data/linear_model.py')
+		    linear_model = joblib.load('data/linear_model.pkl')
 		    result_prediction = linear_model.predict(ex1)
-		elif model_choice == 'linear1_model':
-			linear1_model = joblib.load('data/linear1_model.py')
-			result_prediction = linear1_model.predict(ex1)
-		elif model_choice == 'linear2_model':
-			linear2_model == joblib.load('data/linear2_model.py')
-			result_prediction = linear2_model.predict(ex1)
+		elif model_choice == 'ridge_model':
+			ridge_model = joblib.load('data/ridge_model.pkl')
+			result_prediction = ridge_model.predict(ex1)
+		elif model_choice == 'rf2':
+			RandomForestRegressor = joblib.load('data/RandomForestRegressor.pkl')
+			result_prediction = RandomForestRegressor.predict(ex1)
+		elif model_choice == 'lr2':
+			LinearRegression = joblib.load('data/LinearRegression.pkl')
+			result_prediction = LinearRegression.predict(ex1)
+		elif model_choice == 'bayesianridge_model':
+			bayesianridge_model == joblib.load('data/bayesianridge_model.pkl')
+			result_prediction = bayesianridge_model.predict(ex1)
+		elif model_choice == 'randomforest_model':
+			randomforest_model == joblib.load('data/randomforest_model.pkl')
+			result_prediction = randomforest_model.predict(ex1)
+		elif model_choice == 'logistic_classifier':
+			logistic_classifier == joblib.load('data/logistic_classifier.pkl')
+			result_prediction = logistic_classifier.predict(ex1)
+			
 
 	return render_template('index.html', GRE_Score=GRE_Score,
 		TOEFL_Score=TOEFL_Score,

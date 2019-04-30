@@ -20,19 +20,19 @@
                 <form action="{{ url_for('analyze')}}" method="POST">
                   <div class="input-field">
                    <p class="range-field">
-                        <input type="range" id="GRE_ScoreInput" name="GRE_Score" min="0" max="340" value="0" step="10" >
+                        <input type="range" id="GRE_ScoreInput" name="GRE_Score" min="0" max="340" value="0" step="1" >
                     <label for="GRE_Score">GRE Score</label>
                     
                   </div>
                    <div class="input-field">
                    <p class="range-field">
-                        <input type="range" id="TOEFL_ScoreInput" name="TOEFL_Score" min="0" max="120" value="0" step="10"> 
+                        <input type="range" id="TOEFL_ScoreInput" name="TOEFL_Score" min="0" max="120" value="0" step="1"> 
                     <label for="">TOEFL Score</label>
                   </div>
                    <div class="input-field">
                    <p class="range-field">
                         <input type="range" id="University_RatingInput" name="University_Rating" min="0" max="5" value="0"
-                   step="0.5" >
+                   step="1">
                     <label for="">University_rating</label>
                   </div>
                   <div class="input-field">
@@ -50,13 +50,13 @@
                    <div class="input-field">
                     <p class="range-field">
                          <input type="range" id="CGPAInput" name="CGPA" min="0" max="10" value="0"
-                   step="0.1">
+                   step="0.01">
                      <label for="">CGPA</label>
                    </div>
                    <div class="input-field">
                     <p class="range-field">
-                         <input type="range" id="ResearchInput" name="Research" min="0" max="5" value="0"
-                   step="0.5">
+                         <input type="range" id="ResearchInput" name="Research" min="0" max="1" value="0"
+                   step="1">
                      <label for="">Research</label>
                    </div>
                    
@@ -65,8 +65,14 @@
                     <select id="role" name="model_choice">
                       <option value="" disabled selected>Select Model</option>
                       <option value="linear_model">linear_model</option>
-                        <option value="linear1_model">linear1_model</option>
-                        <option value="linear2_model">linear2_model</option>
+                        <option value="ridge_model">ridge_model</option>
+                        <option value="rf2">rf2</option>
+                        <option value="lr2">lr2</option>
+                        
+                        <option value="bayesianridge_model">bayesianridge_model</option>
+                        <option value="randomforest_model">randomforest_model</option>
+                        <option value="logistic_classifier">logistic_classifier</option>
+                        
                     </select>
                     <label for="role">Select ML Algorithm</label>
                   </div>
@@ -78,11 +84,11 @@
              <div class="col s12 m4 offers">
                      <div class="card-panel purple lighten-4 grey-text text-darken-4 z-depth-0">
                          
-                           <p>GRE_Score: {{ GRE_Score }}</p>
+            <p>GRE_Score: {{ GRE_Score }}</p>
             <p>TOEFL_Score: {{ TOEFL_Score }}</p>
             <p>University_Rating: {{ University_Rating}} </p>
             <p>SOP: {{ SOP}}</p>
-            <p>LOR</p>: {{ LOR}}</p>
+            <p>LOR: {{ LOR}}</p>
             <p>CGPA: {{ CGPA}}</p>
             <p>Research: {{ Research}}</p>
          Using {{ model_selected }} on {{ clean_data }}
