@@ -12,24 +12,36 @@ from sklearn.linear_model import Ridge
 
 
 
-
 df = pd.read_csv('Admission_Predict_Ver1.1.csv')
 df.rename(columns = {'Chance of Admit ':'Chance of Admit', 'LOR ':'LOR'}, inplace=True)
 df.drop(labels='Serial No.', axis=1, inplace=True)
 
-y = df["Chance of Admit"].values
-x = df.drop(["Chance of Admit"],axis=1)
-
-# separating train (80%) and test (%20) sets
-x_train, x_test,y_train, y_test = train_test_split(x,y,test_size = 0.20,random_state = 42)
 
 
-scalerX = MinMaxScaler(feature_range=(0, 1))
-x_train[x_train.columns] = scalerX.fit_transform(x_train[x_train.columns])
-x_test[x_test.columns] = scalerX.transform(x_test[x_test.columns])
+from sklearn import preprocessing
+minmax_scaler = preprocessing.MinMaxScaler()
+minmax_scaler_fit=minmax_scaler.fit(df[['GRE Score', 'TOEFL Score']])
+NormalizedGREScoreAndTOEFLScore = minmax_scaler_fit.transform(df[['GRE Score', 'TOEFL Score']])
+
+
+# Creating a separate Data Frame just to store new standardized columns
+NormalizedGREScoreAndTOEFLScoreData=pd.DataFrame(NormalizedGREScoreAndTOEFLScore,columns=['GRE Score', 'TOEFL Score'])
+NormalizedGREScoreAndTOEFLScoreData.head()
+
+df['GRE Score']=NormalizedGREScoreAndTOEFLScoreData['GRE Score']
+df['TOEFL Score']=NormalizedGREScoreAndTOEFLScoreData['TOEFL Score']
+
+PredictorColumns=list(df.columns)
+PredictorColumns.remove('Chance of Admit')
+
+X=df[PredictorColumns].values
+y=df['Chance of Admit'].values
+
+from sklearn.model_selection import train_test_split
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.3,random_state=10)
 
 r = Ridge()
-r.fit(x_train,y_train)
+r.fit(X_train,y_train)
 
 with open('ridge_model.pkl', 'wb') as file:
     pickle.dump(r, file)

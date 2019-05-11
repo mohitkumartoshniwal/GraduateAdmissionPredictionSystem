@@ -31,7 +31,7 @@ def analyze():
 		LOR = request.form['LOR']
 		CGPA = request.form['CGPA']
 		Research = request.form['Research']
-		model_choice = request.form['model_choice']
+		#model_choice = request.form['model_choice']
 
 		# Clean the data by convert from unicode to float 
 		sample_data = [GRE_Score,TOEFL_Score,University_Rating,SOP,LOR,CGPA,Research]
@@ -43,27 +43,19 @@ def analyze():
 		# ex1 = np.array([6.2,3.4,5.4,2.3]).reshape(1,-1)
 
 		# Reloading the Model
-		if model_choice == 'linear_model':
-		    linear_model = joblib.load('data/linear_model.pkl')
-		    result_prediction = linear_model.predict(ex1)
-		elif model_choice == 'ridge_model':
-			ridge_model = joblib.load('data/ridge_model.pkl')
-			result_prediction = ridge_model.predict(ex1)
-		elif model_choice == 'rf2':
-			RandomForestRegressor = joblib.load('data/RandomForestRegressor.pkl')
-			result_prediction = RandomForestRegressor.predict(ex1)
-		elif model_choice == 'lr2':
-			LinearRegression = joblib.load('data/LinearRegression.pkl')
-			result_prediction = LinearRegression.predict(ex1)
-		elif model_choice == 'bayesianridge_model':
-			bayesianridge_model == joblib.load('data/bayesianridge_model.pkl')
-			result_prediction = bayesianridge_model.predict(ex1)
-		elif model_choice == 'randomforest_model':
-			randomforest_model == joblib.load('data/randomforest_model.pkl')
-			result_prediction = randomforest_model.predict(ex1)
-		elif model_choice == 'logistic_classifier':
-			logistic_classifier == joblib.load('data/logistic_classifier.pkl')
-			result_prediction = logistic_classifier.predict(ex1)
+		#if model_choice == 'linear_model':
+		#   LinearRegression = joblib.load('data/LinearRegression.pkl')
+		#   result_prediction = LinearRegression.predict(ex1)
+		#elif model_choice == 'ridge_model':
+		#	ridge_model = joblib.load('data/ridge_model.pkl')
+		#	result_prediction = ridge_model.predict(ex1)
+		#elif model_choice == 'rf2':
+		RandomForestRegressor = joblib.load('data/RandomForestRegressor.pkl')
+		result_prediction = RandomForestRegressor.predict(ex1)*100
+		#elif model_choice == 'bayesianridge_model':
+		#	bayesianridge_model == joblib.load('data/bayesianridge_model.pkl')
+		#	result_prediction = bayesianridge_model.predict(ex1)
+		
 			
 
 	return render_template('index.html', GRE_Score=GRE_Score,
@@ -74,8 +66,8 @@ def analyze():
 		CGPA=CGPA,
 		Research=Research,
 		clean_data=clean_data,
-		result_prediction=result_prediction,
-		model_selected=model_choice)
+		result_prediction=result_prediction)
+		#,model_selected=model_choice)
 
 
 if __name__ == '__main__':
