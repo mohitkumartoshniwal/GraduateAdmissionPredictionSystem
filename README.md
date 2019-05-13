@@ -17,5 +17,5 @@ It is recommended that you install Python 3.7.x, as there have been some issues 
 `pip install -r requirements.txt`
 
 
-### Go to the directory `grad` and run
+### Go to the directory `grad\miniproject` and run
 `python app.py`
