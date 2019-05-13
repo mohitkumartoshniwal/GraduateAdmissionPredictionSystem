@@ -3,6 +3,7 @@ numpy
 flask
 flask_material
 seaborn
+gunicorn
 sklearn
 matplotlib
 matplotlib.pyplot
