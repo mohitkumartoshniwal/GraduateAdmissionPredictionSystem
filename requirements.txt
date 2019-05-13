@@ -1,6 +1,8 @@
-seaborn
-flask
-flask_material
 pandas
 numpy
+flask
+flask_material
+seaborn
 sklearn
+matplotlib
+matplotlib.pyplot
