@@ -6,4 +6,3 @@ seaborn
 gunicorn
 sklearn
 matplotlib
-matplotlib.pyplot
