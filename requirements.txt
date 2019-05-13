@@ -1,0 +1,6 @@
+seaborn
+flask
+flask_material
+pandas
+numpy
+sklearn
