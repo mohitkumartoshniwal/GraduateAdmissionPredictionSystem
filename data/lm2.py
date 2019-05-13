@@ -9,6 +9,7 @@ from sklearn.preprocessing import MinMaxScaler
 import pickle
 from sklearn.linear_model import LinearRegression
 from sklearn import preprocessing
+from sklearn.tree import DecisionTreeRegressor
 #from sklearn.cross_validation import cross_val_score, cross_val_predict
 
 

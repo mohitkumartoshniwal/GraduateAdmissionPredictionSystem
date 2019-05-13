@@ -7,7 +7,10 @@ import os
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 import pickle
-from sklearn.linear_model import Ridge
+from sklearn.linear_model import LinearRegression
+from sklearn import preprocessing
+from sklearn.tree import DecisionTreeRegressor
+#from sklearn.cross_validation import cross_val_score, cross_val_predict
 
 
 
@@ -16,8 +19,8 @@ df = pd.read_csv('Admission_Predict_Ver1.1.csv')
 df.rename(columns = {'Chance of Admit ':'Chance of Admit', 'LOR ':'LOR'}, inplace=True)
 df.drop(labels='Serial No.', axis=1, inplace=True)
 
-
-
+#y = df["Chance of Admit"].values
+#x = df.drop(["Chance of Admit"],axis=1)
 from sklearn import preprocessing
 minmax_scaler = preprocessing.MinMaxScaler()
 minmax_scaler_fit=minmax_scaler.fit(df[['GRE Score', 'TOEFL Score']])
@@ -40,8 +43,17 @@ y=df['Chance of Admit'].values
 from sklearn.model_selection import train_test_split
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.3,random_state=10)
 
-r = Ridge()
-r.fit(X_train,y_train)
 
-with open('ridge_model.pkl', 'wb') as file:
-    pickle.dump(r, file)
+
+dt = DecisionTreeRegressor()
+RF=dt.fit(X_train,y_train)
+
+
+
+
+#cross_val_score(lm, x, y, cv=3)
+
+
+
+with open('DecisionTree.pkl', 'wb') as file:
+    pickle.dump(dt, file)
