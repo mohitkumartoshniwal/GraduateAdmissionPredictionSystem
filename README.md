@@ -16,15 +16,15 @@ It is recommended that you install Python 3.7.x, as there have been some issues 
 ### Install all Python dependencies
 `pip install -r requirements.txt`
 
-### With the above command all the Python dependencies wil be installled.
-## pandas
-## numpy
-## flask
-## flask_material
-## seaborn
-## gunicorn
-## sklearn
-## matplotlib
+## With the above command all the Python dependencies wil be installled.
+### pandas
+### numpy
+### flask
+### flask_material
+### seaborn
+### gunicorn
+### sklearn
+### matplotlib
 
 
 ### Go to the directory `grad\miniproject` and run
