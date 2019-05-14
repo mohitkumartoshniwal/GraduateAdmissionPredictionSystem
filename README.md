@@ -2,7 +2,7 @@
 ## Install Python 3.7
 It is recommended that you install Python 3.7.x, as there have been some issues using older versions of Python.
 
-## Create a new directory and a virtual environment
+## Create a new directory 
 ### Create an empty directory for this project
 `mkdir grad`
 
