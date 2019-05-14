@@ -38,4 +38,4 @@ It is recommended that you install Python 3.7.x, as there have been some issues 
 `python app.py`
 
 ### The project is also live to be used at the below url link
-[https://graduate-admission-prediction.herokuapp.com]
+[https://graduate-admission-predictor.herokuapp.com]
