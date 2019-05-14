@@ -17,18 +17,25 @@ It is recommended that you install Python 3.7.x, as there have been some issues 
 `pip install -r requirements.txt`
 
 ## With the above command all the Python dependencies wil be installled.
-# pandas
-# numpy
-# flask
-# flask_material
-# seaborn
-# gunicorn
-# sklearn
-# matplotlib
+ pandas
+
+ numpy
+
+ flask
+
+ flask_material
+
+ seaborn
+
+ gunicorn
+
+ sklearn
+
+ matplotlib
 
 
 ### Go to the directory `grad\miniproject` and run
 `python app.py`
 
 ### The project is also live to be used at the below url link
-`https://graduate-admission-prediction.herokuapp.com`
+[https://graduate-admission-prediction.herokuapp.com]
